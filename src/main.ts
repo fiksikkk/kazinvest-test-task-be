@@ -9,6 +9,9 @@ async function bootstrap(): Promise<void> {
   const frontendOrigin = process.env.FRONTEND_ORIGIN;
   const port = Number(process.env.PORT ?? 3000);
 
+  // Respect the original client IP when the app is behind nginx.
+  app.set('trust proxy', 1);
+
   app.enableCors({
     origin: frontendOrigin,
   });
