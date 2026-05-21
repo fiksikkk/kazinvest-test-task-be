@@ -46,6 +46,7 @@ jobs:
           command_timeout: 20m
           script: |
             mkdir -p /var/www/kazinvest-test-api
+            rm -rf /var/www/kazinvest-test-api/dist
 
       - name: Upload backend files
         uses: appleboy/scp-action@v0.1.7
