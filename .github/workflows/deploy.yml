@@ -55,7 +55,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          source: "dist,package.json,pnpm-lock.yaml"
+          source: "dist,package.json,pnpm-lock.yaml,pnpm-workspace.yaml"
           target: "/var/www/kazinvest-test-api"
           strip_components: 0
 
@@ -69,7 +69,6 @@ jobs:
           script: |
             set -e
             cd /var/www/kazinvest-test-api
-            corepack enable
             pnpm install --prod --frozen-lockfile
             sudo systemctl restart kazinvest-test-api
             sudo systemctl --no-pager --full status kazinvest-test-api
