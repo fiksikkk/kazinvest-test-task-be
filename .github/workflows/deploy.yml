@@ -56,7 +56,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           source: "dist,package.json,pnpm-lock.yaml"
-          target: "/var/www/kazinvest-test-api
+          target: "/var/www/kazinvest-test-api"
           strip_components: 0
 
       - name: Install production dependencies and restart service
