@@ -43,6 +43,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
+          command_timeout: 20m
           script: |
             mkdir -p /var/www/kazinvest-test-api
 
@@ -64,9 +65,10 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
+          command_timeout: 20m
           script: |
             set -e
             cd /var/www/kazinvest-test-api
-            pnpm install --prod --frozen-lockfile
+            pnpm install --prod --frozen-lockfile --force
             sudo systemctl restart kazinvest-test-api
             sudo systemctl --no-pager --full status kazinvest-test-api
