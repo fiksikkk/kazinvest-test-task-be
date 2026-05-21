@@ -44,6 +44,13 @@ pnpm run test
 pnpm run test:e2e
 ```
 
+Production start:
+
+```bash
+pnpm run build
+pnpm run start
+```
+
 ## API
 
 `POST /chat`
@@ -71,6 +78,17 @@ curl -X POST http://localhost:3000/chat \
   -H "Content-Type: application/json" \
   -d '{"message":"Hello, tell me about NestJS"}'
 ```
+
+If you proxy the backend through `nginx` under `/api`, the public endpoint becomes `POST /api/chat`.
+
+## Deployment
+
+This repository includes example deployment files for a Linux server setup:
+
+- GitHub Actions workflow: `.github/workflows/deploy.yml`
+- `systemd` unit: `deploy/kazinvest-test-api.service`
+- `nginx` server example: `deploy/nginx.conf`
+- production env example: `deploy/kazinvest-test-api.env.example`
 
 ## What Is Included
 
